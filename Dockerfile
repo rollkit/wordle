@@ -1,0 +1,57 @@
+# Stage 1: Install ignite CLI and rollkit
+FROM golang as base
+
+# Install dependencies
+RUN apt update && \
+	apt-get install -y \
+	build-essential \
+	ca-certificates \
+	curl
+
+# Install rollkit
+RUN curl -sSL https://rollkit.dev/install.sh | sh -s v0.13.6
+
+# Install ignite
+RUN curl https://get.ignite.com/cli@v28.4.0! | bash
+
+# Set the working directory
+WORKDIR /app
+
+# cache dependencies.
+COPY ./go.mod . 
+COPY ./go.sum . 
+RUN go mod download
+
+# Copy all files from the current directory to the container
+COPY . .
+
+# Build the chain
+RUN ignite chain build && ignite rollkit init --local-da
+
+# Initialize the rollkit.toml file
+RUN rollkit toml init
+
+# Run rollkit command to initialize the entrypoint executable
+RUN rollkit
+
+# Stage 2: Set up the runtime environment
+FROM debian:bookworm-slim
+
+# Set the working directory
+WORKDIR /root
+
+# Copy over the rollkit binary from the build stage
+COPY --from=base /go/bin/rollkit /usr/bin
+
+# Copy the entrypoint and rollkit.toml files from the build stage
+COPY --from=base /app/entrypoint ./entrypoint
+COPY --from=base /app/rollkit.toml ./rollkit.toml
+
+# Copy the $HOME/.wordle directory from the build stage
+COPY --from=base /root/.wordle /root/.wordle
+
+# Ensure the entrypoint script is executable
+RUN chmod +x ./entrypoint
+
+# Keep the container running after it has been started
+CMD tail -f /dev/null
