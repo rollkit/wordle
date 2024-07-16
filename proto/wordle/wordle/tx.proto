@@ -52,5 +52,8 @@ message MsgSubmitGuess {
   string word    = 2;
 }
 
-message MsgSubmitGuessResponse {}
+message MsgSubmitGuessResponse {
+  string title = 1;
+  string body = 2;
+}
 
