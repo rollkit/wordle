@@ -1,4 +1,5 @@
 syntax = "proto3";
+
 package wordle.wordle;
 
 import "amino/amino.proto";
@@ -6,25 +7,81 @@ import "gogoproto/gogo.proto";
 import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
 import "wordle/wordle/params.proto";
+import "wordle/wordle/wordle.proto";
+import "wordle/wordle/guess.proto";
 
 option go_package = "wordle/x/wordle/types";
 
 // Query defines the gRPC querier service.
 service Query {
+  
   // Parameters queries the parameters of the module.
-  rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
+  rpc Params (QueryParamsRequest) returns (QueryParamsResponse) {
     option (google.api.http).get = "/wordle/wordle/params";
+  
+  }
+  
+  // Queries a list of Wordle items.
+  rpc Wordle    (QueryGetWordleRequest) returns (QueryGetWordleResponse) {
+    option (google.api.http).get = "/wordle/wordle/wordle/{index}";
+  
+  }
+  rpc WordleAll (QueryAllWordleRequest) returns (QueryAllWordleResponse) {
+    option (google.api.http).get = "/wordle/wordle/wordle";
+  
+  }
+  
+  // Queries a list of Guess items.
+  rpc Guess    (QueryGetGuessRequest) returns (QueryGetGuessResponse) {
+    option (google.api.http).get = "/wordle/wordle/guess/{index}";
+  
+  }
+  rpc GuessAll (QueryAllGuessRequest) returns (QueryAllGuessResponse) {
+    option (google.api.http).get = "/wordle/wordle/guess";
+  
   }
 }
-
 // QueryParamsRequest is request type for the Query/Params RPC method.
 message QueryParamsRequest {}
 
 // QueryParamsResponse is response type for the Query/Params RPC method.
 message QueryParamsResponse {
+  
   // params holds all the parameters of this module.
-  Params params = 1 [
-    (gogoproto.nullable) = false,
-    (amino.dont_omitempty) = true
-  ];
+  Params params = 1 [(gogoproto.nullable) = false, (amino.dont_omitempty) = true];
 }
+
+message QueryGetWordleRequest {
+  string index = 1;
+}
+
+message QueryGetWordleResponse {
+  Wordle wordle = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllWordleRequest {
+  cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllWordleResponse {
+  repeated Wordle                                 wordle     = 1 [(gogoproto.nullable) = false];
+           cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryGetGuessRequest {
+  string index = 1;
+}
+
+message QueryGetGuessResponse {
+  Guess guess = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllGuessRequest {
+  cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllGuessResponse {
+  repeated Guess                                  guess      = 1 [(gogoproto.nullable) = false];
+           cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+

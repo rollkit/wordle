@@ -1,17 +1,21 @@
 syntax = "proto3";
+
 package wordle.wordle;
 
 import "amino/amino.proto";
 import "gogoproto/gogo.proto";
 import "wordle/wordle/params.proto";
+import "wordle/wordle/wordle.proto";
+import "wordle/wordle/guess.proto";
 
 option go_package = "wordle/x/wordle/types";
 
 // GenesisState defines the wordle module's genesis state.
 message GenesisState {
+  
   // params defines all the parameters of the module.
-  Params params = 1 [
-    (gogoproto.nullable) = false,
-    (amino.dont_omitempty) = true
-  ];
+           Params params     = 1 [(gogoproto.nullable) = false, (amino.dont_omitempty) = true];
+  repeated Wordle wordleList = 2 [(gogoproto.nullable) = false] ;
+  repeated Guess  guessList  = 3 [(gogoproto.nullable) = false] ;
 }
+

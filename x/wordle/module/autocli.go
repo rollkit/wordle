@@ -17,6 +17,28 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 					Use:       "params",
 					Short:     "Shows the parameters of the module",
 				},
+				{
+					RpcMethod: "WordleAll",
+					Use:       "list-wordle",
+					Short:     "List all wordle",
+				},
+				{
+					RpcMethod:      "Wordle",
+					Use:            "show-wordle [id]",
+					Short:          "Shows a wordle",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "index"}},
+				},
+				{
+					RpcMethod: "GuessAll",
+					Use:       "list-guess",
+					Short:     "List all guess",
+				},
+				{
+					RpcMethod:      "Guess",
+					Use:            "show-guess [id]",
+					Short:          "Shows a guess",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "index"}},
+				},
 				// this line is used by ignite scaffolding # autocli/query
 			},
 		},
