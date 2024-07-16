@@ -37,6 +37,11 @@ RUN rollkit
 # Stage 2: Set up the runtime environment
 FROM debian:bookworm-slim
 
+# Install jq
+RUN apt update && \
+	apt-get install -y \
+	jq
+
 # Set the working directory
 WORKDIR /root
 
