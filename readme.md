@@ -1,4 +1,9 @@
 # wordle
+
+This repo was built by following the steps in the [rollkit wordle tutorial](https://rollkit.dev/tutorials/wordle)
+
+--- 
+
 **wordle** is a blockchain built using Cosmos SDK and Tendermint and created with [Ignite CLI](https://ignite.com/cli).
 
 ## Get started
