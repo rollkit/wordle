@@ -1,0 +1,15 @@
+syntax = "proto3";
+package wordle.wordle;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+
+option go_package = "wordle/x/wordle/types";
+
+// Params defines the parameters for the module.
+message Params {
+  option (amino.name) = "wordle/x/wordle/Params";
+  option (gogoproto.equal) = true;
+
+  
+}
