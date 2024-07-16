@@ -28,6 +28,18 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 					RpcMethod: "UpdateParams",
 					Skip:      true, // skipped because authority gated
 				},
+				{
+					RpcMethod:      "SubmitWordle",
+					Use:            "submit-wordle [word]",
+					Short:          "Send a submit-wordle tx",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "word"}},
+				},
+				{
+					RpcMethod:      "SubmitGuess",
+					Use:            "submit-guess [word]",
+					Short:          "Send a submit-guess tx",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "word"}},
+				},
 				// this line is used by ignite scaffolding # autocli/tx
 			},
 		},

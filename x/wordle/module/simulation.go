@@ -23,7 +23,15 @@ var (
 )
 
 const (
-// this line is used by starport scaffolding # simapp/module/const
+	opWeightMsgSubmitWordle = "op_weight_msg_submit_wordle"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgSubmitWordle int = 100
+
+	opWeightMsgSubmitGuess = "op_weight_msg_submit_guess"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgSubmitGuess int = 100
+
+	// this line is used by starport scaffolding # simapp/module/const
 )
 
 // GenerateGenesisState creates a randomized GenState of the module.
@@ -46,6 +54,28 @@ func (am AppModule) RegisterStoreDecoder(_ simtypes.StoreDecoderRegistry) {}
 func (am AppModule) WeightedOperations(simState module.SimulationState) []simtypes.WeightedOperation {
 	operations := make([]simtypes.WeightedOperation, 0)
 
+	var weightMsgSubmitWordle int
+	simState.AppParams.GetOrGenerate(opWeightMsgSubmitWordle, &weightMsgSubmitWordle, nil,
+		func(_ *rand.Rand) {
+			weightMsgSubmitWordle = defaultWeightMsgSubmitWordle
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgSubmitWordle,
+		wordlesimulation.SimulateMsgSubmitWordle(am.accountKeeper, am.bankKeeper, am.keeper),
+	))
+
+	var weightMsgSubmitGuess int
+	simState.AppParams.GetOrGenerate(opWeightMsgSubmitGuess, &weightMsgSubmitGuess, nil,
+		func(_ *rand.Rand) {
+			weightMsgSubmitGuess = defaultWeightMsgSubmitGuess
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgSubmitGuess,
+		wordlesimulation.SimulateMsgSubmitGuess(am.accountKeeper, am.bankKeeper, am.keeper),
+	))
+
 	// this line is used by starport scaffolding # simapp/module/operation
 
 	return operations
@@ -54,6 +84,22 @@ func (am AppModule) WeightedOperations(simState module.SimulationState) []simtyp
 // ProposalMsgs returns msgs used for governance proposals for simulations.
 func (am AppModule) ProposalMsgs(simState module.SimulationState) []simtypes.WeightedProposalMsg {
 	return []simtypes.WeightedProposalMsg{
+		simulation.NewWeightedProposalMsg(
+			opWeightMsgSubmitWordle,
+			defaultWeightMsgSubmitWordle,
+			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
+				wordlesimulation.SimulateMsgSubmitWordle(am.accountKeeper, am.bankKeeper, am.keeper)
+				return nil
+			},
+		),
+		simulation.NewWeightedProposalMsg(
+			opWeightMsgSubmitGuess,
+			defaultWeightMsgSubmitGuess,
+			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
+				wordlesimulation.SimulateMsgSubmitGuess(am.accountKeeper, am.bankKeeper, am.keeper)
+				return nil
+			},
+		),
 		// this line is used by starport scaffolding # simapp/module/OpMsg
 	}
 }

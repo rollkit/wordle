@@ -36,8 +36,6 @@ const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 type MsgUpdateParams struct {
 	// authority is the address that controls the module (defaults to x/gov unless overwritten).
 	Authority string `protobuf:"bytes,1,opt,name=authority,proto3" json:"authority,omitempty"`
-	// params defines the module parameters to update.
-	//
 	// NOTE: All parameters must be supplied.
 	Params Params `protobuf:"bytes,2,opt,name=params,proto3" json:"params"`
 }
@@ -127,15 +125,195 @@ func (m *MsgUpdateParamsResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_MsgUpdateParamsResponse proto.InternalMessageInfo
 
+type MsgSubmitWordle struct {
+	Creator string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	Word    string `protobuf:"bytes,2,opt,name=word,proto3" json:"word,omitempty"`
+}
+
+func (m *MsgSubmitWordle) Reset()         { *m = MsgSubmitWordle{} }
+func (m *MsgSubmitWordle) String() string { return proto.CompactTextString(m) }
+func (*MsgSubmitWordle) ProtoMessage()    {}
+func (*MsgSubmitWordle) Descriptor() ([]byte, []int) {
+	return fileDescriptor_61889d352c915950, []int{2}
+}
+func (m *MsgSubmitWordle) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgSubmitWordle) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgSubmitWordle.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgSubmitWordle) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgSubmitWordle.Merge(m, src)
+}
+func (m *MsgSubmitWordle) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgSubmitWordle) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgSubmitWordle.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgSubmitWordle proto.InternalMessageInfo
+
+func (m *MsgSubmitWordle) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgSubmitWordle) GetWord() string {
+	if m != nil {
+		return m.Word
+	}
+	return ""
+}
+
+type MsgSubmitWordleResponse struct {
+}
+
+func (m *MsgSubmitWordleResponse) Reset()         { *m = MsgSubmitWordleResponse{} }
+func (m *MsgSubmitWordleResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgSubmitWordleResponse) ProtoMessage()    {}
+func (*MsgSubmitWordleResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_61889d352c915950, []int{3}
+}
+func (m *MsgSubmitWordleResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgSubmitWordleResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgSubmitWordleResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgSubmitWordleResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgSubmitWordleResponse.Merge(m, src)
+}
+func (m *MsgSubmitWordleResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgSubmitWordleResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgSubmitWordleResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgSubmitWordleResponse proto.InternalMessageInfo
+
+type MsgSubmitGuess struct {
+	Creator string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	Word    string `protobuf:"bytes,2,opt,name=word,proto3" json:"word,omitempty"`
+}
+
+func (m *MsgSubmitGuess) Reset()         { *m = MsgSubmitGuess{} }
+func (m *MsgSubmitGuess) String() string { return proto.CompactTextString(m) }
+func (*MsgSubmitGuess) ProtoMessage()    {}
+func (*MsgSubmitGuess) Descriptor() ([]byte, []int) {
+	return fileDescriptor_61889d352c915950, []int{4}
+}
+func (m *MsgSubmitGuess) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgSubmitGuess) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgSubmitGuess.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgSubmitGuess) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgSubmitGuess.Merge(m, src)
+}
+func (m *MsgSubmitGuess) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgSubmitGuess) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgSubmitGuess.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgSubmitGuess proto.InternalMessageInfo
+
+func (m *MsgSubmitGuess) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgSubmitGuess) GetWord() string {
+	if m != nil {
+		return m.Word
+	}
+	return ""
+}
+
+type MsgSubmitGuessResponse struct {
+}
+
+func (m *MsgSubmitGuessResponse) Reset()         { *m = MsgSubmitGuessResponse{} }
+func (m *MsgSubmitGuessResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgSubmitGuessResponse) ProtoMessage()    {}
+func (*MsgSubmitGuessResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_61889d352c915950, []int{5}
+}
+func (m *MsgSubmitGuessResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgSubmitGuessResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgSubmitGuessResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgSubmitGuessResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgSubmitGuessResponse.Merge(m, src)
+}
+func (m *MsgSubmitGuessResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgSubmitGuessResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgSubmitGuessResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgSubmitGuessResponse proto.InternalMessageInfo
+
 func init() {
 	proto.RegisterType((*MsgUpdateParams)(nil), "wordle.wordle.MsgUpdateParams")
 	proto.RegisterType((*MsgUpdateParamsResponse)(nil), "wordle.wordle.MsgUpdateParamsResponse")
+	proto.RegisterType((*MsgSubmitWordle)(nil), "wordle.wordle.MsgSubmitWordle")
+	proto.RegisterType((*MsgSubmitWordleResponse)(nil), "wordle.wordle.MsgSubmitWordleResponse")
+	proto.RegisterType((*MsgSubmitGuess)(nil), "wordle.wordle.MsgSubmitGuess")
+	proto.RegisterType((*MsgSubmitGuessResponse)(nil), "wordle.wordle.MsgSubmitGuessResponse")
 }
 
 func init() { proto.RegisterFile("wordle/wordle/tx.proto", fileDescriptor_61889d352c915950) }
 
 var fileDescriptor_61889d352c915950 = []byte{
-	// 314 bytes of a gzipped FileDescriptorProto
+	// 422 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0x2b, 0xcf, 0x2f, 0x4a,
 	0xc9, 0x49, 0xd5, 0x87, 0x52, 0x25, 0x15, 0x7a, 0x05, 0x45, 0xf9, 0x25, 0xf9, 0x42, 0xbc, 0x10,
 	0x01, 0x3d, 0x08, 0x25, 0x25, 0x98, 0x98, 0x9b, 0x99, 0x97, 0xaf, 0x0f, 0x26, 0x21, 0x2a, 0xa4,
@@ -150,12 +328,19 @@ var fileDescriptor_61889d352c915950 = []byte{
 	0x62, 0xbc, 0x13, 0xe7, 0x89, 0x7b, 0xf2, 0x0c, 0x2b, 0x9e, 0x6f, 0xd0, 0x62, 0x0c, 0x82, 0xaa,
 	0xb7, 0x32, 0x6a, 0x7a, 0xbe, 0x41, 0x0b, 0x61, 0x52, 0xd7, 0xf3, 0x0d, 0x5a, 0xf2, 0x50, 0xd7,
 	0x56, 0xc0, 0x9c, 0x8d, 0xe6, 0x4a, 0x25, 0x49, 0x2e, 0x71, 0x34, 0xa1, 0xa0, 0xd4, 0xe2, 0x82,
-	0xfc, 0xbc, 0xe2, 0x54, 0xa3, 0x14, 0x2e, 0x66, 0xdf, 0xe2, 0x74, 0xa1, 0x30, 0x2e, 0x1e, 0x14,
-	0x7f, 0xc9, 0xa1, 0xb9, 0x07, 0x4d, 0xbb, 0x94, 0x1a, 0x7e, 0x79, 0x98, 0xf1, 0x52, 0xac, 0x0d,
-	0x20, 0xc7, 0x3b, 0xe9, 0x9f, 0x78, 0x24, 0xc7, 0x78, 0xe1, 0x91, 0x1c, 0xe3, 0x83, 0x47, 0x72,
-	0x8c, 0x13, 0x1e, 0xcb, 0x31, 0x5c, 0x78, 0x2c, 0xc7, 0x70, 0xe3, 0xb1, 0x1c, 0x43, 0x94, 0x28,
-	0xba, 0xdb, 0x4b, 0x2a, 0x0b, 0x52, 0x8b, 0x93, 0xd8, 0xc0, 0x41, 0x6e, 0x0c, 0x08, 0x00, 0x00,
-	0xff, 0xff, 0xe7, 0x3c, 0x05, 0x96, 0x14, 0x02, 0x00, 0x00,
+	0xfc, 0xbc, 0xe2, 0x54, 0x25, 0x5f, 0xb0, 0x9f, 0x82, 0x4b, 0x93, 0x72, 0x33, 0x4b, 0xc2, 0xc1,
+	0xba, 0x85, 0x24, 0xb8, 0xd8, 0x93, 0x8b, 0x52, 0x13, 0x4b, 0xf2, 0x8b, 0x20, 0x3e, 0x0a, 0x82,
+	0x71, 0x85, 0x84, 0xb8, 0x58, 0x40, 0x36, 0x80, 0xdd, 0xcc, 0x19, 0x04, 0x66, 0x5b, 0xf1, 0x80,
+	0xdc, 0x03, 0x53, 0x01, 0xb5, 0x09, 0xd9, 0x38, 0xb8, 0x4d, 0x3e, 0x5c, 0x7c, 0x70, 0x29, 0xf7,
+	0xd2, 0xd4, 0xe2, 0x62, 0x8a, 0x2c, 0x92, 0xe0, 0x12, 0x43, 0x35, 0x0d, 0x66, 0x8f, 0xd1, 0x44,
+	0x26, 0x2e, 0x66, 0xdf, 0xe2, 0x74, 0xa1, 0x30, 0x2e, 0x1e, 0x94, 0xa8, 0x92, 0x43, 0x0b, 0x62,
+	0xb4, 0x10, 0x91, 0x52, 0xc3, 0x2f, 0x0f, 0x33, 0x1f, 0x64, 0x2e, 0x4a, 0x70, 0x61, 0x31, 0x17,
+	0x59, 0x1e, 0x9b, 0xb9, 0xd8, 0xc2, 0x47, 0x28, 0x98, 0x8b, 0x1b, 0x39, 0x70, 0x64, 0x71, 0x69,
+	0x03, 0x4b, 0x4b, 0xa9, 0xe2, 0x95, 0x86, 0x19, 0x2a, 0xc5, 0xda, 0x00, 0x4a, 0x3c, 0x4e, 0xfa,
+	0x27, 0x1e, 0xc9, 0x31, 0x5e, 0x78, 0x24, 0xc7, 0xf8, 0xe0, 0x91, 0x1c, 0xe3, 0x84, 0xc7, 0x72,
+	0x0c, 0x17, 0x1e, 0xcb, 0x31, 0xdc, 0x78, 0x2c, 0xc7, 0x10, 0x25, 0x8a, 0x9e, 0x76, 0x4a, 0x2a,
+	0x0b, 0x52, 0x8b, 0x93, 0xd8, 0xc0, 0x49, 0xde, 0x18, 0x10, 0x00, 0x00, 0xff, 0xff, 0x93, 0x7e,
+	0x8f, 0x80, 0x94, 0x03, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -173,6 +358,8 @@ type MsgClient interface {
 	// UpdateParams defines a (governance) operation for updating the module
 	// parameters. The authority defaults to the x/gov module account.
 	UpdateParams(ctx context.Context, in *MsgUpdateParams, opts ...grpc.CallOption) (*MsgUpdateParamsResponse, error)
+	SubmitWordle(ctx context.Context, in *MsgSubmitWordle, opts ...grpc.CallOption) (*MsgSubmitWordleResponse, error)
+	SubmitGuess(ctx context.Context, in *MsgSubmitGuess, opts ...grpc.CallOption) (*MsgSubmitGuessResponse, error)
 }
 
 type msgClient struct {
@@ -192,11 +379,31 @@ func (c *msgClient) UpdateParams(ctx context.Context, in *MsgUpdateParams, opts 
 	return out, nil
 }
 
+func (c *msgClient) SubmitWordle(ctx context.Context, in *MsgSubmitWordle, opts ...grpc.CallOption) (*MsgSubmitWordleResponse, error) {
+	out := new(MsgSubmitWordleResponse)
+	err := c.cc.Invoke(ctx, "/wordle.wordle.Msg/SubmitWordle", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) SubmitGuess(ctx context.Context, in *MsgSubmitGuess, opts ...grpc.CallOption) (*MsgSubmitGuessResponse, error) {
+	out := new(MsgSubmitGuessResponse)
+	err := c.cc.Invoke(ctx, "/wordle.wordle.Msg/SubmitGuess", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MsgServer is the server API for Msg service.
 type MsgServer interface {
 	// UpdateParams defines a (governance) operation for updating the module
 	// parameters. The authority defaults to the x/gov module account.
 	UpdateParams(context.Context, *MsgUpdateParams) (*MsgUpdateParamsResponse, error)
+	SubmitWordle(context.Context, *MsgSubmitWordle) (*MsgSubmitWordleResponse, error)
+	SubmitGuess(context.Context, *MsgSubmitGuess) (*MsgSubmitGuessResponse, error)
 }
 
 // UnimplementedMsgServer can be embedded to have forward compatible implementations.
@@ -205,6 +412,12 @@ type UnimplementedMsgServer struct {
 
 func (*UnimplementedMsgServer) UpdateParams(ctx context.Context, req *MsgUpdateParams) (*MsgUpdateParamsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateParams not implemented")
+}
+func (*UnimplementedMsgServer) SubmitWordle(ctx context.Context, req *MsgSubmitWordle) (*MsgSubmitWordleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SubmitWordle not implemented")
+}
+func (*UnimplementedMsgServer) SubmitGuess(ctx context.Context, req *MsgSubmitGuess) (*MsgSubmitGuessResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SubmitGuess not implemented")
 }
 
 func RegisterMsgServer(s grpc1.Server, srv MsgServer) {
@@ -229,6 +442,42 @@ func _Msg_UpdateParams_Handler(srv interface{}, ctx context.Context, dec func(in
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Msg_SubmitWordle_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgSubmitWordle)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).SubmitWordle(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/wordle.wordle.Msg/SubmitWordle",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).SubmitWordle(ctx, req.(*MsgSubmitWordle))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_SubmitGuess_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgSubmitGuess)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).SubmitGuess(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/wordle.wordle.Msg/SubmitGuess",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).SubmitGuess(ctx, req.(*MsgSubmitGuess))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Msg_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "wordle.wordle.Msg",
 	HandlerType: (*MsgServer)(nil),
@@ -236,6 +485,14 @@ var _Msg_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateParams",
 			Handler:    _Msg_UpdateParams_Handler,
+		},
+		{
+			MethodName: "SubmitWordle",
+			Handler:    _Msg_SubmitWordle_Handler,
+		},
+		{
+			MethodName: "SubmitGuess",
+			Handler:    _Msg_SubmitGuess_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -305,6 +562,126 @@ func (m *MsgUpdateParamsResponse) MarshalToSizedBuffer(dAtA []byte) (int, error)
 	return len(dAtA) - i, nil
 }
 
+func (m *MsgSubmitWordle) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgSubmitWordle) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgSubmitWordle) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.Word) > 0 {
+		i -= len(m.Word)
+		copy(dAtA[i:], m.Word)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Word)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgSubmitWordleResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgSubmitWordleResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgSubmitWordleResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgSubmitGuess) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgSubmitGuess) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgSubmitGuess) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.Word) > 0 {
+		i -= len(m.Word)
+		copy(dAtA[i:], m.Word)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Word)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgSubmitGuessResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgSubmitGuessResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgSubmitGuessResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
 func encodeVarintTx(dAtA []byte, offset int, v uint64) int {
 	offset -= sovTx(v)
 	base := offset
@@ -332,6 +709,58 @@ func (m *MsgUpdateParams) Size() (n int) {
 }
 
 func (m *MsgUpdateParamsResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgSubmitWordle) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.Word)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	return n
+}
+
+func (m *MsgSubmitWordleResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgSubmitGuess) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.Word)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	return n
+}
+
+func (m *MsgSubmitGuessResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -488,6 +917,334 @@ func (m *MsgUpdateParamsResponse) Unmarshal(dAtA []byte) error {
 		}
 		if fieldNum <= 0 {
 			return fmt.Errorf("proto: MsgUpdateParamsResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgSubmitWordle) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgSubmitWordle: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgSubmitWordle: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Word", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Word = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgSubmitWordleResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgSubmitWordleResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgSubmitWordleResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgSubmitGuess) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgSubmitGuess: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgSubmitGuess: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Word", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Word = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgSubmitGuessResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgSubmitGuessResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgSubmitGuessResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		default:

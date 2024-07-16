@@ -21,6 +21,8 @@ const _ = grpc.SupportPackageIsVersion7
 
 const (
 	Msg_UpdateParams_FullMethodName = "/wordle.wordle.Msg/UpdateParams"
+	Msg_SubmitWordle_FullMethodName = "/wordle.wordle.Msg/SubmitWordle"
+	Msg_SubmitGuess_FullMethodName  = "/wordle.wordle.Msg/SubmitGuess"
 )
 
 // MsgClient is the client API for Msg service.
@@ -30,6 +32,8 @@ type MsgClient interface {
 	// UpdateParams defines a (governance) operation for updating the module
 	// parameters. The authority defaults to the x/gov module account.
 	UpdateParams(ctx context.Context, in *MsgUpdateParams, opts ...grpc.CallOption) (*MsgUpdateParamsResponse, error)
+	SubmitWordle(ctx context.Context, in *MsgSubmitWordle, opts ...grpc.CallOption) (*MsgSubmitWordleResponse, error)
+	SubmitGuess(ctx context.Context, in *MsgSubmitGuess, opts ...grpc.CallOption) (*MsgSubmitGuessResponse, error)
 }
 
 type msgClient struct {
@@ -49,6 +53,24 @@ func (c *msgClient) UpdateParams(ctx context.Context, in *MsgUpdateParams, opts 
 	return out, nil
 }
 
+func (c *msgClient) SubmitWordle(ctx context.Context, in *MsgSubmitWordle, opts ...grpc.CallOption) (*MsgSubmitWordleResponse, error) {
+	out := new(MsgSubmitWordleResponse)
+	err := c.cc.Invoke(ctx, Msg_SubmitWordle_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) SubmitGuess(ctx context.Context, in *MsgSubmitGuess, opts ...grpc.CallOption) (*MsgSubmitGuessResponse, error) {
+	out := new(MsgSubmitGuessResponse)
+	err := c.cc.Invoke(ctx, Msg_SubmitGuess_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MsgServer is the server API for Msg service.
 // All implementations must embed UnimplementedMsgServer
 // for forward compatibility
@@ -56,6 +78,8 @@ type MsgServer interface {
 	// UpdateParams defines a (governance) operation for updating the module
 	// parameters. The authority defaults to the x/gov module account.
 	UpdateParams(context.Context, *MsgUpdateParams) (*MsgUpdateParamsResponse, error)
+	SubmitWordle(context.Context, *MsgSubmitWordle) (*MsgSubmitWordleResponse, error)
+	SubmitGuess(context.Context, *MsgSubmitGuess) (*MsgSubmitGuessResponse, error)
 	mustEmbedUnimplementedMsgServer()
 }
 
@@ -65,6 +89,12 @@ type UnimplementedMsgServer struct {
 
 func (UnimplementedMsgServer) UpdateParams(context.Context, *MsgUpdateParams) (*MsgUpdateParamsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateParams not implemented")
+}
+func (UnimplementedMsgServer) SubmitWordle(context.Context, *MsgSubmitWordle) (*MsgSubmitWordleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SubmitWordle not implemented")
+}
+func (UnimplementedMsgServer) SubmitGuess(context.Context, *MsgSubmitGuess) (*MsgSubmitGuessResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SubmitGuess not implemented")
 }
 func (UnimplementedMsgServer) mustEmbedUnimplementedMsgServer() {}
 
@@ -97,6 +127,42 @@ func _Msg_UpdateParams_Handler(srv interface{}, ctx context.Context, dec func(in
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Msg_SubmitWordle_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgSubmitWordle)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).SubmitWordle(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Msg_SubmitWordle_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).SubmitWordle(ctx, req.(*MsgSubmitWordle))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_SubmitGuess_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgSubmitGuess)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).SubmitGuess(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Msg_SubmitGuess_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).SubmitGuess(ctx, req.(*MsgSubmitGuess))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Msg_ServiceDesc is the grpc.ServiceDesc for Msg service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -107,6 +173,14 @@ var Msg_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateParams",
 			Handler:    _Msg_UpdateParams_Handler,
+		},
+		{
+			MethodName: "SubmitWordle",
+			Handler:    _Msg_SubmitWordle_Handler,
+		},
+		{
+			MethodName: "SubmitGuess",
+			Handler:    _Msg_SubmitGuess_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

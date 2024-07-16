@@ -16219,22 +16219,14 @@ paths:
               parameters.
       tags:
         - Msg
-  /wordle/wordle/params:
-    get:
-      summary: Parameters queries the parameters of the module.
-      operationId: WordleWordleQuery_Params
+  /wordle.wordle.Msg/SubmitGuess:
+    post:
+      operationId: WordleWordleMsg_SubmitGuess
       responses:
         '200':
           description: A successful response.
           schema:
             type: object
-            properties:
-              params:
-                description: params holds all the parameters of this module.
-                type: object
-            description: >-
-              QueryParamsResponse is response type for the Query/Params RPC
-              method.
         default:
           description: An unexpected error response.
           schema:
@@ -16253,8 +16245,58 @@ paths:
                     '@type':
                       type: string
                   additionalProperties: {}
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              creator:
+                type: string
+              word:
+                type: string
       tags:
-        - Query
+        - Msg
+  /wordle.wordle.Msg/SubmitWordle:
+    post:
+      operationId: WordleWordleMsg_SubmitWordle
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              creator:
+                type: string
+              word:
+                type: string
+      tags:
+        - Msg
   /wordle.wordle.Msg/UpdateParams:
     post:
       summary: |-
@@ -16303,14 +16345,47 @@ paths:
                   authority is the address that controls the module (defaults to
                   x/gov unless overwritten).
               params:
-                description: |-
-                  params defines the module parameters to update.
-
-                  NOTE: All parameters must be supplied.
+                description: 'NOTE: All parameters must be supplied.'
                 type: object
             description: MsgUpdateParams is the Msg/UpdateParams request type.
       tags:
         - Msg
+  /wordle/wordle/params:
+    get:
+      summary: Parameters queries the parameters of the module.
+      operationId: WordleWordleQuery_Params
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              params:
+                description: params holds all the parameters of this module.
+                type: object
+            description: >-
+              QueryParamsResponse is response type for the Query/Params RPC
+              method.
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      tags:
+        - Query
 definitions:
   cosmos.auth.v1beta1.MsgUpdateParams:
     type: object
@@ -22963,6 +23038,41 @@ definitions:
     description: |-
       Version defines the versioning scheme used to negotiate the IBC verison in
       the connection handshake.
+  wordle.wordle.MsgSubmitGuess:
+    type: object
+    properties:
+      creator:
+        type: string
+      word:
+        type: string
+  wordle.wordle.MsgSubmitGuessResponse:
+    type: object
+  wordle.wordle.MsgSubmitWordle:
+    type: object
+    properties:
+      creator:
+        type: string
+      word:
+        type: string
+  wordle.wordle.MsgSubmitWordleResponse:
+    type: object
+  wordle.wordle.MsgUpdateParams:
+    type: object
+    properties:
+      authority:
+        type: string
+        description: >-
+          authority is the address that controls the module (defaults to x/gov
+          unless overwritten).
+      params:
+        description: 'NOTE: All parameters must be supplied.'
+        type: object
+    description: MsgUpdateParams is the Msg/UpdateParams request type.
+  wordle.wordle.MsgUpdateParamsResponse:
+    type: object
+    description: |-
+      MsgUpdateParamsResponse defines the response structure for executing a
+      MsgUpdateParams message.
   wordle.wordle.Params:
     type: object
     description: Params defines the parameters for the module.
@@ -22973,23 +23083,3 @@ definitions:
         description: params holds all the parameters of this module.
         type: object
     description: QueryParamsResponse is response type for the Query/Params RPC method.
-  wordle.wordle.MsgUpdateParams:
-    type: object
-    properties:
-      authority:
-        type: string
-        description: >-
-          authority is the address that controls the module (defaults to x/gov
-          unless overwritten).
-      params:
-        description: |-
-          params defines the module parameters to update.
-
-          NOTE: All parameters must be supplied.
-        type: object
-    description: MsgUpdateParams is the Msg/UpdateParams request type.
-  wordle.wordle.MsgUpdateParamsResponse:
-    type: object
-    description: |-
-      MsgUpdateParamsResponse defines the response structure for executing a
-      MsgUpdateParams message.
