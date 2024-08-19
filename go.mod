@@ -38,7 +38,7 @@ require (
 	github.com/grpc-ecosystem/grpc-gateway v1.16.0
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.20.0
 	github.com/rollkit/cosmos-sdk-starter v0.0.0-20240711025550-2ec636be897c
-	github.com/rollkit/rollkit v0.13.6
+	github.com/rollkit/rollkit v0.13.7
 	github.com/spf13/cobra v1.8.1
 	github.com/spf13/pflag v1.0.5
 	github.com/spf13/viper v1.19.0
