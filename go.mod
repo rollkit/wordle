@@ -44,8 +44,8 @@ require (
 	github.com/spf13/viper v1.19.0
 	github.com/stretchr/testify v1.9.0
 	golang.org/x/tools v0.21.1-0.20240508182429-e35e4ccd0d2d
-	google.golang.org/genproto/googleapis/api v0.0.0-20240528184218-531527333157
-	google.golang.org/grpc v1.65.0
+	google.golang.org/genproto/googleapis/api v0.0.0-20240604185151-ef581f913117
+	google.golang.org/grpc v1.66.0
 	google.golang.org/grpc/cmd/protoc-gen-go-grpc v1.3.0
 	google.golang.org/protobuf v1.34.2
 )
@@ -130,7 +130,7 @@ require (
 	github.com/fatih/color v1.15.0 // indirect
 	github.com/felixge/fgprof v0.9.4 // indirect
 	github.com/felixge/httpsnoop v1.0.4 // indirect
-	github.com/filecoin-project/go-jsonrpc v0.3.1 // indirect
+	github.com/filecoin-project/go-jsonrpc v0.6.0 // indirect
 	github.com/flynn/noise v1.1.0 // indirect
 	github.com/francoispqt/gojay v1.2.13 // indirect
 	github.com/fsnotify/fsnotify v1.7.0 // indirect
@@ -294,7 +294,7 @@ require (
 	github.com/raulk/go-watchdog v1.3.0 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475 // indirect
 	github.com/rogpeppe/go-internal v1.12.0 // indirect
-	github.com/rollkit/go-da v0.5.0 // indirect
+	github.com/rollkit/go-da v0.5.2 // indirect
 	github.com/rs/cors v1.11.1 // indirect
 	github.com/rs/zerolog v1.33.0 // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
