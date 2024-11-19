@@ -1,7 +1,7 @@
 module wordle
 
 go 1.22
-toolchain go1.22.5
+toolchain go1.22.9
 
 replace (
 	// fix upstream GHSA-h395-qcrw-5vmq vulnerability.
@@ -44,7 +44,7 @@ require (
 	github.com/stretchr/testify v1.9.0
 	golang.org/x/tools v0.27.0
 	google.golang.org/genproto/googleapis/api v0.0.0-20241021214115-324edc3d5d38
-	google.golang.org/grpc v1.67.1
+	google.golang.org/grpc v1.68.0
 	google.golang.org/grpc/cmd/protoc-gen-go-grpc v1.3.0
 	google.golang.org/protobuf v1.35.1
 )
