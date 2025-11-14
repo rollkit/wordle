@@ -1,7 +1,6 @@
 module wordle
 
-go 1.22
-toolchain go1.22.5
+go 1.23.0
 
 replace (
 	// fix upstream GHSA-h395-qcrw-5vmq vulnerability.
@@ -338,7 +337,7 @@ require (
 	golang.org/x/exp v0.0.0-20240613232115-7f521ea00fb8 // indirect
 	golang.org/x/mod v0.22.0 // indirect
 	golang.org/x/net v0.31.0 // indirect
-	golang.org/x/oauth2 v0.23.0 // indirect
+	golang.org/x/oauth2 v0.27.0 // indirect
 	golang.org/x/sync v0.9.0 // indirect
 	golang.org/x/sys v0.27.0 // indirect
 	golang.org/x/term v0.26.0 // indirect
